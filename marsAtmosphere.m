@@ -9,7 +9,5 @@ else
     p = .699 * exp(-.00009 * h);
 end
 density = p / (.1921 * (T + 237.15));
-if h > 80000
-    density = 0; %gets rid of irregular spike
-end
+
 end
