@@ -1,8 +1,8 @@
 function res = BaseScript()
 duration = 7 * 60; %seconds
 
-theta = 0; %degrees
-Vi = 18360 * 1000 / 60 / 60 %m / s (kmps in m/s)
+theta = -16; %degrees
+Vi = 18360 * 1000 / 60 / 60; %m / s (kmps in m/s)
 
 x = 0;  %m
 y = 129 * 1000;  %m
@@ -13,7 +13,7 @@ Vy = sind(theta) * Vi;   %m / s
 S = [x, y, Vx, Vy];
 
 options = odeset('Events', @events);
-[Times, Vals, eventTimes] = ode45(@MarsFlow,0:duration, S, options);
+[Times, Vals, eventTimes] = ode45(@MarsFlow, [0 duration] , S, options);
 
 %plot(Times, Vals)
 X = Vals(:,1);
@@ -37,7 +37,7 @@ grid on;
 ylabel('Altitude (km)')
 xlabel('Velocity (km / s)')
 
-subplot(4,1,4);plot(X./1000,Y./1000);
+subplot(4,1,4);comet(X./1000,Y./1000);
 grid on;
 ylabel('Altitude (km)')
 xlabel('X (km)')

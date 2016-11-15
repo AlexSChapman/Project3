@@ -1,4 +1,5 @@
 function res = MarsFlow(~, S)
+L_D = .24; %lift-drag ratio
 
 %State Variables
 x = S(1);       %m
