@@ -20,8 +20,14 @@ Fgy = g;   %kg m / s^2
 Fdx = -1/2.*C_d.*p.*A.*V_x.*sqrt(V_x.^2 + V_y.^2); % kg m / s^2
 Fdy = -1/2.*C_d.*p.*A.*V_y.*sqrt(V_x.^2 + V_y.^2); % kg m / s^2
 
-Fx = Fdx - Fgx; %kg m / s^2
-Fy = Fdy - Fgy; %kg m / s^2
+aOT = 90 - atand(V_y / V_x);
+FLift = L_D * sqrt(Fdx.^2 + Fdy.^2);
+
+Flx = cosd(aOT) * FLift;
+Fly = sind(aOT) * FLift;
+
+Fx = Fdx - Fgx + Flx; %kg m / s^2
+Fy = Fdy - Fgy + Fly; %kg m / s^2
 
 dxdt = V_x; %m / s
 dydt = V_y; %m / s
