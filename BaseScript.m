@@ -20,11 +20,14 @@ X = Vals(:,1);
 Y = Vals(:,2);
 DX = Vals(:,3);
 DY = Vals(:,4);
-VELOCITY = sqrt(DX.^2 + DY.^2); 
+VELOCITY = sqrt(DX.^2 + DY.^2);
+ENERGY = 0.5 * VELOCITY.^2
+ENERGY_0 = 0.5 * 5100^2
+ERatio = ENERGY/ENERGY_0
 
 subplot(4,1,1);plot(Times,DY./1000);
 grid on;
-ylabel('Speed (km/s)')
+ylabel('Y-Speed (km/s)')
 xlabel('Time (s)')
 
 subplot(4,1,2);plot(Times,Y./1000);
@@ -42,6 +45,17 @@ grid on;
 ylabel('Altitude (km)')
 xlabel('X (km)')
 
+%subplot(4,1,4);plot(Times,DX./1000);
+grid on;
+ylabel('X-Speed (km/s)')
+xlabel('Time (s)')
+
+%disp(VELOCITY)
+%disp(Times)
+%disp(X)
+%disp(Y)
+
+T = table(Times, X./1000, Y, VELOCITY,VELOCITY *3600/1000, ERatio*100)
 
     function [value, isterminal,direction] = events(~,input)
         distance = input(1);
