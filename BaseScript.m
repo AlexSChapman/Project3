@@ -1,11 +1,17 @@
 function res = BaseScript()
 duration = 7 * 60; %seconds
 
+C = 1884.06; %Specific Heat PICA (J / (kg *C))
+
 theta = -16; %degrees
 Vi = 18360 * 1000 / 60 / 60; %m / s (kmps in m/s)
+%Vi = 21000 * 1000 / 60 / 60; %m / s (kmps in m/s)
+
 
 x = 0;  %m
-y = 129 * 1000;  %m
+%y = 129 * 1000;  %m
+y = 75 * 1000;  %m
+
 
 Vx = cosd(theta) * Vi;   %m / s
 Vy = sind(theta) * Vi;   %m / s
@@ -51,6 +57,7 @@ plot(VELOCITY./1000,Y./1000);
 grid on;
 ylabel('Altitude (km)')
 xlabel('Velocity (km / s)')
+set(gca,'ytick',[0 25 50 75 100 125 150])
 
 
 T = table(Times, X./1000, Y, VELOCITY, ERatio*100);
@@ -58,7 +65,7 @@ disp(T);
 
     function [value, isterminal,direction] = events(~,input)
         height = input(2);
-        value = height - 0;
+        value = height - 8000;
         isterminal = 1;
         direction = 0;
     end

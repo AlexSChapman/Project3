@@ -10,7 +10,7 @@ V_y = S(4);     %m/s
 %Parameters
 m = 2401 + 899; %Mass (kilograms) (EDL, Rover)
 g = forceGravityMars(m, y); %Gravity (m/s^2)
-p = marsAtmosphere(y); %Density of Air (kg/m^3)
+p = marsAtmosphericDensity(y); %Density of Air (kg/m^3)
 C_d = 1.5; %Coefficient of Drag
 A = 2.25^2 * pi; %Cross-sectional area (m^2)
 
