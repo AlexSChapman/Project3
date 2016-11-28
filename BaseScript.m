@@ -25,22 +25,22 @@ ENERGY = 0.5 * VELOCITY.^2;
 ENERGY_0 = 0.5 * 5100^2;
 ERatio = ENERGY/ENERGY_0;
 
-subplot(3,1,1);plot(Times,DY./1000);
+subplot(4,1,1);plot(Times,DY./1000);
 grid on;
 ylabel('Y-Speed (km/s)')
 xlabel('Time (s)')
 
-subplot(3,1,2);plot(Times,DX./1000);
+subplot(4,1,2);plot(Times,DX./1000);
 grid on;
 ylabel('X-Speed (km/s)')
 xlabel('Time (s)')
 
-subplot(3,1,3);plot(Times,Y./1000);
+subplot(4,1,3);plot(Times,Y./1000);
 grid on;
 ylabel('Altitude (km)')
 xlabel('Time (s)')
 
-subplot(3,1,4);comet(X./1000,Y./1000);
+subplot(4,1,4);comet(X./1000,Y./1000);
 grid on;
 ylabel('Altitude (km)')
 xlabel('X (km)')
