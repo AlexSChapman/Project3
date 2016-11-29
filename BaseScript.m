@@ -31,6 +31,14 @@ ENERGY = 0.5 * VELOCITY.^2;
 ENERGY_0 = 0.5 * 5100^2;
 ERatio = ENERGY/ENERGY_0;
 ACCELERATIONS = calculateAccelerations(Times, VELOCITY);
+[TEMPERATURES, QVALS, EVALS] = calcHeats(Times, Y, VELOCITY, C);
+
+plot(Times, TEMPERATURES,'r');
+% plot(Times, QVALS,'b');
+% plot(Times, EVALS, 'black');
+% legend('temp','q');
+figure();
+
 hold on
 plot(Times, abs(ACCELERATIONS),'black','Linewidth', 2); %acceleration in m/s^2
 plot(Times, Y./1000, 'b','Linewidth', 2); %altitude in km
