@@ -10,7 +10,7 @@ Vi = 18360 * 1000 / 60 / 60; %m / s (kmps in m/s)
 
 x = 0;  %m
 %y = 129 * 1000;  %m
-y = 75 * 1000;  %m
+y = 129 * 1000;  %m
 
 
 Vx = cosd(theta) * Vi;   %m / s
@@ -30,6 +30,14 @@ VELOCITY = sqrt(DX.^2 + DY.^2);
 ENERGY = 0.5 * VELOCITY.^2;
 ENERGY_0 = 0.5 * 5100^2;
 ERatio = ENERGY/ENERGY_0;
+ACCELERATIONS = calculateAccelerations(Times, VELOCITY);
+hold on
+plot(Times, abs(ACCELERATIONS),'black','Linewidth', 2); %acceleration in m/s^2
+plot(Times, Y./1000, 'b','Linewidth', 2); %altitude in km
+plot(Times, VELOCITY./100,'r','Linewidth', 2); %Speed in 100m/s
+xlabel('Time (seconds)');
+ylabel('Acceleration (m/s^2) (black), AirSpeed (100m/s) (red), Altitude (km) (blue)');
+figure();
 
 subplot(4,1,1);plot(Times,DY./1000);
 grid on;
