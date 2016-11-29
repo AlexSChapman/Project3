@@ -46,7 +46,7 @@ grid on;
 ylabel('Altitude (km)')
 xlabel('Time (s)')
 
-subplot(4,1,4);comet(X./1000,Y./1000);
+subplot(4,1,4);plot(X./1000,Y./1000);
 grid on;
 ylabel('Altitude (km)')
 xlabel('X (km)')

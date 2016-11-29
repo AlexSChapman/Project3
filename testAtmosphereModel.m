@@ -8,9 +8,9 @@ for i = 1:length(altitudes)
     densities(i) = marsAtmosphericDensity(altitudes(i));
 end
 
-disp(altitudes)
+disp(altitudes);
 disp('Densities');
-disp(densities)
+disp(densities);
 
 T = table(altitudes, densities);
 disp(T);
@@ -18,6 +18,7 @@ disp(T);
 plot(altitudes./1000, densities);
 ylabel('Density (kg / m^3)')
 xlabel('Height (km)')
-ylim([0 7E-4]);
+ylim([-2E-4 7E-4]);
+title('Atmospheric Density Plot');
 
 end
