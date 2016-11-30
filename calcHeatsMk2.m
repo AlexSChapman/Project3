@@ -13,24 +13,18 @@ qVals = zeros(length(Times));
 eVals = zeros(length(Times));
 dts = zeros(length(Times));
 for i = 2:length(Times)
-    Temperatures(i) = thermalStock / (m  * specificHeat);
+    %Temperatures(i) = thermalStock / (m  * specificHeat);
+    Temperatures(i) = marsAtmosphere(Y(i));
     dt = Times(i) - Times(i-1);
     dts(i) = dt;
-    %     Ug = Y(i) * forceGravityMars(m, Y(i));
-    %     Uk = 1/2 * m * VELOCITY(i)^2;
-    %
-    %     Uf = Ug + Uk;
-    %
-    %     Udiff = Ui - Uf;
-    %     thermalStock = thermalStock + Udiff;
+
+%    qVals(i) = qdot;
     
-    qdot = 1.83E-4 * VELOCITY(i)^3*sqrt(marsAtmosphericDensity(Y(i))/RADIUS); %W / cm^2)
-    qVals(i) = qdot/10000;
-    E = 5.67E-8 * EMISSIVITY * Temperatures(i)^4;
-    eVals(i) = E;
-    SA = pi*RADIUS^2;
-    change = (qdot*SA)*dt;
-    thermalStock = thermalStock + change;
+%     E = 5.67E-8 * EMISSIVITY * Temperatures(i)^4;
+%     eVals(i) = E;
+%     SA = pi*RADIUS^2;
+%     change = (qdot*SA)*dt;
+%     thermalStock = thermalStock + change;
     
 end
 K = Temperatures;

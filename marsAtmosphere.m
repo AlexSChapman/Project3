@@ -1,9 +1,9 @@
-function density = marsAtmosphere(h)
+function T = marsAtmosphere(h)
 %Precondition: altitude above the surface in m
-%Postcondition: atmoshperic density in kg m^3
+%Postcondition: atmoshperic temperature in Celcius
 
 if h > 7000
-    T = abs(-23.4 - (.00222 * h)); %Celcius
+    T = -23.4 - (.00222 * h); %Celcius
     p = abs(.699 * exp(-.00009 * h)); %K-pa
 end
 
