@@ -1,7 +1,7 @@
 function res = BaseScript()
 
 duration = 7 * 60; %seconds
-
+%TheoreticalMaxTemp 2203.15 K
 C = 1884.06; %Specific Heat PICA (J / (kg *C))
 
 theta = -16; %degrees
@@ -32,13 +32,15 @@ ENERGY = 0.5 * VELOCITY.^2;
 ENERGY_0 = 0.5 * 5100^2;
 ERatio = ENERGY/ENERGY_0;
 ACCELERATIONS = calculateAccelerations(Times, VELOCITY);
-[TEMPERATURES, QVALS, EVALS, DTS] = calcHeatsMk2(Times, Y, VELOCITY, C);
+[TEMPERATURES, QVALS, EVALS, DTS] = calcHeats(Times, Y, VELOCITY, C);
 
 w = table(TEMPERATURES(:,1), QVALS(:,1), EVALS(:,1), DTS(:,1));
 
 disp(w);
+disp('IMPORTANT');
+disp(max(QVALS));
 hold
-plot(Y, TEMPERATURES(:,1),'r');
+plot(Times, TEMPERATURES(:,1),'r');
 %plot(Times, QVALS(:,1),'b');
 %plot(Times, EVALS(:,1), 'black');
 % legend('temp','q');

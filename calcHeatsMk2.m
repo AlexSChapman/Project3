@@ -14,6 +14,7 @@ eVals = zeros(length(Times));
 dts = zeros(length(Times));
 for i = 2:length(Times)
     %Temperatures(i) = thermalStock / (m  * specificHeat);
+    outsideTemperature = marsAtmosphere(Y(i));
     Temperatures(i) = marsAtmosphere(Y(i));
     dt = Times(i) - Times(i-1);
     dts(i) = dt;
