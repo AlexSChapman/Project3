@@ -1,5 +1,5 @@
 function res = calculateAccelerations(Times, Velocities)
-res = zeros(length(Times));
+res = zeros(1,length(Times));
 for i = 2:length(Times)
     vf = Velocities(i);
     vi = Velocities(i-1);
