@@ -1,5 +1,5 @@
-function run()
-angles = -85:1:0;
+function res = run()
+angles = -85:.001:0;
 Velocity = 18360 * 1000 / 60 / 60;
 MaxTemp = zeros(1,length(angles));
 MaxAcc = zeros(1,length(angles));
@@ -7,7 +7,7 @@ Vf = zeros(1,length(angles));
 dX = zeros(1,length(angles));
 C_T = 100;
 C_A = 100;
-C_Vf = 200;
+C_Vf = 100;
 C_x = 500 / 100;
 
 for i = 1:length(angles)
@@ -15,13 +15,13 @@ for i = 1:length(angles)
     [MaxTemp(i), MaxAcc(i),Vf(i),dX(i)] = BaseScript(angles(i),Velocity,0);
     Vf(i) = Vf(i) *  0.0740;
 end
-
+% 
 % hold on
 % plot(angles, MaxTemp);
 
 
 
-p = polyfit(angles,MaxTemp,15);
+p = polyfit(angles,MaxTemp,10);
 nTemp = polyval(p,angles);
 plot(angles, nTemp,'Linewidth',2);
 xlabel('Angle from Horizontal (degrees)');
@@ -34,7 +34,7 @@ figure()
 
 hold on
 line([-90 0],[15*9.81 15*9.81]);
-w = polyfit(angles,MaxAcc,15);
+w = polyfit(angles,MaxAcc,10);
 nAcc = polyval(w,angles);
 for i = 1:length(nAcc)
     if(nAcc(i) > 9.81 * 15)
@@ -83,4 +83,8 @@ plot(angles, survivability,'r','Linewidth',2);
 
 title('Product Plot')
 xlabel('Angle from Horizontal (degrees)');
+disp(min(survivability));
+[~,c] = ismember(min(survivability),survivability,'R2012a');
+disp(angles(c));
+res = angles(c);
 end
