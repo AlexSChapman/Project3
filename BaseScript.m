@@ -52,7 +52,7 @@ if(plotFlag == 1)
     disp(max(QVALS));
     
     hold
-    plot(Times, TEMPERATURES,'r');
+    plot(Times, TEMPERATURES,'r','Linewidth',2);
     %plot(Times, QVALS(:,1),'b');
     %plot(Times, EVALS(:,1), 'black');
     % legend('temp','q');
@@ -66,29 +66,29 @@ if(plotFlag == 1)
     ylabel('Acceleration (m/s^2) (black), AirSpeed (100m/s) (red), Altitude (km) (blue)');
     figure();
     
-    subplot(4,1,1);plot(Times,DY./1000);
+    subplot(4,1,1);plot(Times,DY./1000,'Linewidth',2);
     grid on;
     ylabel('Y-Speed (km/s)')
     xlabel('Time (s)')
     
-    subplot(4,1,2);plot(Times,DX./1000);
+    subplot(4,1,2);plot(Times,DX./1000,'Linewidth',2);
     grid on;
     ylabel('X-Speed (km/s)')
     xlabel('Time (s)')
     
-    subplot(4,1,3);plot(Times,Y./1000);
+    subplot(4,1,3);plot(Times,Y./1000,'Linewidth',2);
     grid on;
     ylabel('Altitude (km)')
     xlabel('Time (s)')
     
-    subplot(4,1,4);plot(X./1000,Y./1000);
+    subplot(4,1,4);plot(X./1000,Y./1000,'Linewidth',2);
     grid on;
     ylabel('Altitude (km)')
     xlabel('X (km)')
     
     figure()
     
-    plot(VELOCITY./1000,Y./1000);
+    plot(VELOCITY./1000,Y./1000,'Linewidth',2);
     grid on;
     ylabel('Altitude (km)')
     xlabel('Velocity (km / s)')
